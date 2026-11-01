@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PDF Genius | Your Smart PDF Assistant</title>
+
+    <link rel="stylesheet" href="./style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    </script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <span class="brand-icon">✦</span>
+            <span>PDF <span class="purple">Genius</span></span>
+        </div>
+
+        <p class="menu-label">MENU</p>
+
+        <nav>
+            <a href="#home" class="nav-item active">⌂ Dashboard</a>
+            <a href="#upload" class="nav-item">📂 Upload PDF</a>
+            <a href="#viewer" class="nav-item">📖 PDF Viewer</a>
+            <a href="#summary" class="nav-item">✨ Summarizer</a>
+            <a href="#ask-pdf" class="nav-item">💬 Ask Your PDF</a>
+            <a href="#features" class="nav-item">⚡ Features</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="pro-card">
+                <span>✦</span>
+                <h3>PDF Genius</h3>
+                <p>Your personal PDF workspace. Built to make studying simpler.</p>
+            </div>
+
+            <p class="sidebar-footer">
+                Made for curious minds.
+            </p>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="content">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <p class="breadcrumb">
+                Workspace / Dashboard
+            </p>
+
+            <div class="user-avatar">P</div>
+
+        </div>
+
+
+        <!-- HERO -->
+
+        <section class="hero" id="home">
+
+            <div>
+
+                <span class="tag">YOUR SMART PDF ASSISTANT</span>
+
+                <h1>
+                    Understand PDFs<br>
+                    <span>Smarter & Faster.</span>
+                </h1>
+
+                <p>
+                    Upload your documents, generate summaries
+                    and find relevant information with PDF Genius.
+                </p>
+
+            </div>
+
+            <div class="hero-art">✦</div>
+
+        </section>
+
+
+        <!-- UPLOAD PDF -->
+
+        <section id="upload">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Upload Your PDF</h2>
+                    <p>Choose a document to get started.</p>
+                </div>
+
+                <span class="pdf-badge">PDF ASSISTANT</span>
+
+            </div>
+
+            <div class="upload-box" id="drop-zone">
+
+                <div class="upload-icon">📄</div>
+
+                <h2>Drag & Drop your PDF here</h2>
+
+                <p>
+                    Upload your study material, notes or documents.
+                </p>
+
+               <input
+    type="file"
+    id="pdf-upload"
+    accept=".pdf,application/pdf"
+    multiple
+><input
+    type="file"
+    id="pdf-upload"
+    accept=".pdf,application/pdf"
+    multiple
+>
+
+                <label for="pdf-upload" class="upload-btn">
+                    📂 Choose PDF
+                </label>
+
+                <p id="file-name">No file selected</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PDF VIEWER -->
+
+        <section id="viewer" style="margin-top: 55px;">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>📖 PDF Page Viewer</h2>
+                    <p>Read your document one page at a time.</p>
+                </div>
+
+                <span class="pdf-badge">PAGE READER</span>
+
+            </div>
+
+            <div class="pdf-viewer">
+
+                <div class="pdf-navigation">
+
+                    <button id="prev-page" disabled>
+                        ← Previous
+                    </button>
+
+                    <span id="page-info">Page 0 of 0</span>
+
+                    <button id="next-page" disabled>
+                        Next →
+                    </button>
+
+                </div>
+
+                <div id="extracted-text">
+                    Upload a PDF to view its contents.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARIZER -->
+
+        <section id="summary" style="margin-top: 55px;">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>✨ PDF Summarizer</h2>
+                    <p>Extract important information from your document.</p>
+                </div>
+
+                <span class="pdf-badge">SMART SUMMARY</span>
+
+            </div>
+
+            <div class="summary-container">
+
+                <button id="summarize-btn" disabled>
+                    Generate Summary →
+                </button>
+
+                <div id="summary-result">
+                    Your summary will appear here.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ASK YOUR PDF -->
+
+        <section id="ask-pdf" style="margin-top: 55px;">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>💬 Ask Your PDF</h2>
+                    <p>Ask questions about your uploaded document.</p>
+                </div>
+
+                <span class="pdf-badge">PDF ASSISTANT</span>
+
+            </div>
+
+            <div class="chat-container">
+
+                <div class="chat-box" id="chatBox">
+
+                    <div class="bot-message">
+                        Hello! 👋
+
+                        <br><br>
+
+                        Upload a PDF and ask me anything about it.
+                    </div>
+
+                </div>
+
+                <div class="question-input">
+
+                    <input
+                        type="text"
+                        id="questionInput"
+                        placeholder="Ask something about your PDF..."
+                        autocomplete="off"
+                    >
+
+                    <button id="askButton" type="button">
+                        Ask →
+                    </button>
+
+                </div>
+
+                <p class="chat-note">
+                    Answers are retrieved from your uploaded PDF.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURES -->
+
+        <section class="features" id="features">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Everything You Need</h2>
+                    <p>Explore what PDF Genius can do.</p>
+                </div>
+
+                <span class="pdf-badge">FEATURES</span>
+
+            </div>
+
+            <div class="feature-grid">
+
+                <div class="feature-card purple-card">
+                    <div class="feature-icon">📂</div>
+                    <h3>PDF Upload</h3>
+                    <p>Upload your PDF documents easily.</p>
+                    <span>Easy document access</span>
+                </div>
+
+                <div class="feature-card blue-card">
+                    <div class="feature-icon">📖</div>
+                    <h3>Page Navigation</h3>
+                    <p>Navigate through your PDF page by page.</p>
+                    <span>Simple reading</span>
+                </div>
+
+                <div class="feature-card pink-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Quick Summaries</h3>
+                    <p>Get important points from lengthy documents.</p>
+                    <span>Save reading time</span>
+                </div>
+
+                <div class="feature-card orange-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Ask Your PDF</h3>
+                    <p>Search for relevant information using questions.</p>
+                    <span>Find information faster</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CREATOR FOOTER -->
+
+        <div class="developer-credit">
+    <span>Designed & Developed by</span>
+    <h3>Patheyya</h3>
+    <p>© 2026 PDF Genius. All Rights Reserved.</p>
+</div>
+
+    </main>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script type="module" src="./script.js"></script>
+</body>
+</html>
